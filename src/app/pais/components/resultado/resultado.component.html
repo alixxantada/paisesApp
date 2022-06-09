@@ -1,0 +1,27 @@
+<table class="table table.hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Bandera</th>
+            <th>Nombre</th>
+            <th>Poblacion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pais of paises; let i = index">
+            <!-- le ponemos i +1 para evitar que salga el 0 como primer valor-->
+            <td>{{ i + 1 }}</td>
+            <td>
+                <!-- con los [] en src le decimos que la info viene de un componente-->
+                <img class="small-flag" [src]="pais.flags.png" alt="bandera pais"> 
+            </td>
+            <td> {{pais.capital}}, {{pais.name}}</td>
+            <td>{{pais.population | number }}</td>
+            <td>
+                <!-- Se ponen las llaves [] porque necesitamos construir la informacion de la ruta-->
+                <a [routerLink]="['/pais', pais.alpha2Code]">Ver...</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

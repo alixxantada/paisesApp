@@ -1,0 +1,32 @@
+<h3>Buscar por region <small>{{ regionActiva | titlecase }}</small></h3>
+<hr>
+<h5>Seleccione la region</h5>
+<div class="row">
+    <div class="col">
+
+        <!-- Esta seria una forma de modificar una clase-->
+        <!-- [class.btn-primary]="region === regionActiva" -->
+
+        
+        <!-- Esta seria otra forma de cambiar la clase -->
+        <!-- [ngClass]="{
+            'btn-primary': regionActiva === region,
+            'btn-outline-primary': regionActiva !== region
+        }" -->
+        <!-- en el class indicamos el cambio de la clase en funcion de una condicion, de una forma eficiente ¡¡¡¡ver en el componente la funcion-->
+        <button *ngFor="let region of regiones"
+                [class]="getClaseCSS( region )"
+               
+                (click)="activarRegion( region )">
+                {{ region | titlecase}}
+        </button>        
+    </div>
+</div>
+<div *ngIf="paises.length > 0" class="row">
+
+    <div class="col">
+
+        <app-resultado [paises]="paises"></app-resultado>
+
+    </div>
+</div>
